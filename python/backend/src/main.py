@@ -19,7 +19,7 @@ def hello_world2():
     result = {'msg':'Hello world desde otra ruta!'}
     return jsonify(result)
 
-
+# Esta linea lo que hace es que en el postman http://127.0.0.1:5000/user y method post 
 @app.route('/user',methods = ['POST'])
 def saveUsers():
     user = request.json
