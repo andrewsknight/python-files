@@ -27,3 +27,8 @@ Para generar las librerias que tiene cada proyecto y que otro programador pueda 
 ## Paso 5: Instalar las dependencias desde otro ordenador
         
         pip install -r requirements.txt
+
+## Paso 6: Arrancar el entorno
+
+        export FLASK_APP=src/main.py
+        flask run
