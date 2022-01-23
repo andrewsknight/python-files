@@ -23,3 +23,7 @@ en este ejemplo el entorno se llama backend
 Para generar las librerias que tiene cada proyecto y que otro programador pueda bajarse el programa e instalar las depedencias.
 
         pip freeze > requirements.txt
+
+## Paso 5: Instalar las dependencias desde otro ordenador
+        
+        pip install -r requirements.txt
