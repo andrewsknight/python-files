@@ -25,7 +25,7 @@
     </form>
     <script>
         //recoger los datos del formulario
-        document.querySelector('form').addEventListener('submit', function(e) {
+        document.querySelector('form').addEventListener('submit', function (e) {
             e.preventDefault();
             var name = document.querySelector('#name').value;
             var lastname = document.querySelector('#lastname').value;
@@ -36,16 +36,25 @@
                 lastname: lastname,
                 age: age
             };
-            //crear una variable para enviar los datos
-            var xhr = new XMLHttpRequest();
-            //abrir la conexion
-            xhr.open('POST', 'http://localhost:5000/user');
-            //enviar los datos
-            xhr.send(JSON.stringify(user));
-            //recibir la respuesta
-            xhr.addEventListener('load', function() {
-               alert('usuario guardado correctamente');
-            });
+        
+            fetch('http://localhost:5000/user', {
+                method: 'POST',
+                body: user
+            })
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json()
+                    } else {
+                        throw "Error en la llamada Ajax";
+                    }
+
+                })
+                .then(function (userResponse) {
+                    alert(JSON.stringify(userResponse));
+                })
+                .catch(function (err) {
+                    alert(err);
+                });
         });
     </script>
 
