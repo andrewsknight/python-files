@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> Crear usuario </h1>
+    <!-- pagina web con un formulario con 3 propiedades name , lastname  y age-->
+    <form>
+        <label for="name">Nombre</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <label for="lastname">Apellido</label>
+        <input type="text" name="lastname" id="lastname">
+        <br>
+        <label for="age">Edad</label>
+        <input type="number" name="age" id="age">
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+    <script>
+        //recoger los datos del formulario
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var name = document.querySelector('#name').value;
+            var lastname = document.querySelector('#lastname').value;
+            var age = document.querySelector('#age').value;
+            //crear un objeto con los datos
+            var user = {
+                name: name,
+                lastname: lastname,
+                age: age
+            };
+            //crear una variable para enviar los datos
+            var xhr = new XMLHttpRequest();
+            //abrir la conexion
+            xhr.open('POST', 'http://localhost:5000/user');
+            //enviar los datos
+            xhr.send(JSON.stringify(user));
+            //recibir la respuesta
+            xhr.addEventListener('load', function() {
+               alert('usuario guardado correctamente');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
