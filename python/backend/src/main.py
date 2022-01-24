@@ -1,14 +1,18 @@
 # importamos la librería flask y la guardamos en la libreria Flask
 from flask import Flask, jsonify, request
-from utils.dataBase import save
+from utils.dataBase import saveUser
 
 # Creamos una variable app que contiene el servirdor de Flask
 app = Flask(__name__)
 
-
+# CRUD
+# Create => POST
+# Read => GET
+# Update => PUT
+# Delete => DELETE
 
  
-@app.route('/',methods = ['GET','POST'])
+@app.route('/',methods = ['GET'])
 def hello_world():
     result = {'msg':'Hello world!'}
     return jsonify(result)
@@ -23,5 +27,5 @@ def hello_world2():
 @app.route('/user',methods = ['POST'])
 def saveUsers():
     user = request.json
-    save(user)
+    saveUser(user)
     return jsonify(user)

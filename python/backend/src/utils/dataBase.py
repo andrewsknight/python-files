@@ -7,7 +7,7 @@ def createTable(name):
 
 usersKeys = ['name', 'lastname', 'age']
 
-def save(person):
+def saveUser(person):
     createTable('user')
     userStr = ''
     for key in usersKeys:
