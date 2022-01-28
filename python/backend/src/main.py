@@ -1,10 +1,12 @@
 # importamos la librería flask y la guardamos en la libreria Flask
 from flask import Flask, jsonify, request
 from utils.dataBase import saveUser
+from flask_cors import CORS
+
 
 # Creamos una variable app que contiene el servirdor de Flask
 app = Flask(__name__)
-
+CORS(app)
 # CRUD
 # Create => POST
 # Read => GET
@@ -29,3 +31,6 @@ def saveUsers():
     user = request.json
     saveUser(user)
     return jsonify(user)
+
+
+app.run('0.0.0.0')
